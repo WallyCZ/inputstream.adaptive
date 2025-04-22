@@ -74,7 +74,10 @@ CWVCdmAdapter::CWVCdmAdapter(std::string_view licenseURL,
   }
 
   if (!serverCert.empty())
+  {
+    LOG::Log(LOGDEBUG, "SetServerCertificate: size %u !", serverCert.size());
     wv_adapter->SetServerCertificate(0, serverCert.data(), serverCert.size());
+  }
 
   // For backward compatibility: If no | is found in URL, use the most common working config
   if (m_licenseUrl.find('|') == std::string::npos)
