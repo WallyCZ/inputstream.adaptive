@@ -23,6 +23,9 @@ environment:
 #    - GENERATOR: "Visual Studio 16 ARM"
 #      CONFIG: Release
 #      WINSTORE: -DCMAKE_SYSTEM_NAME=WindowsStore -DCMAKE_SYSTEM_VERSION="10.0.22000.0"
+artifacts:
+  - path: C:\projects\xbmc\addons\inputstream.adaptive\inputstream.adaptive.dll
+    name: inputstream-adaptive-dll
 
 build_script:
   - cd ..
