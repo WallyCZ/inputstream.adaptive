@@ -40,4 +40,4 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
   - mkdir artifact
   # copy the .dll and .zip from the xbmc addons folder into that
-  - copy "xbmc\addons\inputstream.adaptive\inputstream.adaptive.dll" artifact
+  - copy "..\xbmc\addons\inputstream.adaptive\inputstream.adaptive.dll" artifact
