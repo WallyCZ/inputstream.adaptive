@@ -77,8 +77,6 @@ CWVCdmAdapter::CWVCdmAdapter(std::string_view licenseURL,
   {
     LOG::Log(LOGDEBUG, "SetServerCertificate: size %u !", serverCert.size());
     wv_adapter->SetServerCertificate(0, serverCert.data(), serverCert.size());
-    wv_adapter->setPropertyString("privacyMode", "enable");
-
   }
 
   // For backward compatibility: If no | is found in URL, use the most common working config
