@@ -329,15 +329,21 @@ void CdmAdapter::SetServerCertificate(uint32_t promise_id,
     server_certificate_data_size > limits::kMaxCertificateLength) {
   return;
   }
-  if (cdm9_)
+  if (cdm9_) {
     cdm9_->SetServerCertificate(promise_id, server_certificate_data,
       server_certificate_data_size);
-  else if (cdm10_)
+    LOG::Log(LOGINFO, "SetServerCertificate9");
+  }
+  else if (cdm10_) {
     cdm10_->SetServerCertificate(promise_id, server_certificate_data,
       server_certificate_data_size);
-  else if (cdm11_)
+    LOG::Log(LOGINFO, "SetServerCertificate10");
+  }
+  else if (cdm11_) {
     cdm11_->SetServerCertificate(promise_id, server_certificate_data,
       server_certificate_data_size);
+    LOG::Log(LOGINFO, "SetServerCertificate11");
+  }
 }
 
 void CdmAdapter::CreateSessionAndGenerateRequest(uint32_t promise_id,
@@ -346,6 +352,7 @@ void CdmAdapter::CreateSessionAndGenerateRequest(uint32_t promise_id,
   const uint8_t* init_data,
   uint32_t init_data_size)
 {
+  LOG::Log(LOGINFO, "CreateSessionAndGenerateRequest");
   if (cdm9_)
     cdm9_->CreateSessionAndGenerateRequest(
       promise_id, session_type,
@@ -368,6 +375,7 @@ void CdmAdapter::LoadSession(uint32_t promise_id,
   const char* session_id,
   uint32_t session_id_size)
 {
+  LOG::Log(LOGINFO, "LoadSession");
   if (cdm9_)
     cdm9_->LoadSession(promise_id, session_type,
       session_id, session_id_size);
@@ -385,6 +393,7 @@ void CdmAdapter::UpdateSession(uint32_t promise_id,
   const uint8_t* response,
   uint32_t response_size)
 {
+  LOG::Log(LOGINFO, "UpdateSession");
   if (cdm9_)
     cdm9_->UpdateSession(promise_id, session_id, session_id_size,
             response, response_size);
@@ -400,6 +409,7 @@ void CdmAdapter::CloseSession(uint32_t promise_id,
   const char* session_id,
   uint32_t session_id_size)
 {
+  LOG::Log(LOGINFO, "CloseSession");
   {
     std::lock_guard<std::mutex> lock(m_closeSessionMutex);
     m_isClosingSession = true;
@@ -419,6 +429,7 @@ void CdmAdapter::RemoveSession(uint32_t promise_id,
   const char* session_id,
   uint32_t session_id_size)
 {
+  LOG::Log(LOGINFO, "RemoveSession");
   if (cdm9_)
     cdm9_->RemoveSession(promise_id, session_id, session_id_size);
   else if (cdm10_)
@@ -429,6 +440,7 @@ void CdmAdapter::RemoveSession(uint32_t promise_id,
 
 void CdmAdapter::TimerExpired(void* context)
 {
+  LOG::Log(LOGINFO, "TimerExpired");
   if (cdm9_)
     cdm9_->TimerExpired(context);
   else if (cdm10_)
