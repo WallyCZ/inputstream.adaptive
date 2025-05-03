@@ -259,7 +259,7 @@ void CdmAdapter::Initialize()
 
   std::string version{get_cdm_verion_func()};
 
-  if (version == "4.10.2891.0")
+  if (0) //(version == "4.10.2891.0")
   {
     // This version have unclear problems
     // such as crashes on OnStorageId() method calls and others video decoding crashes
